@@ -12,7 +12,8 @@ It's not "perfect" because, for example, the 1 fork goes all the way through the
 It is suggested that you use the following settings when you draw your map in an image editing application (I used GIMP which is free):
 - Pencil tool 5 pixels wide.
 - Copy the colors from `palette.png` with an eyedropper tool before you draw each line.
-- It is recommended to go in the color order listed in palette: first left to right and then down the rows since that is how the answer key was generated.
+- It is recommended to go in the color order listed in palette: (first left to right and then down the rows) since that is how the answer key was generated.
+- Make sure to save the image in a format with transparency (png) because if the transparency gets set to black it may affect your score.
 
 To grade your quiz run:
 `python gradeQuiz.py answerKey.png yourAnswer.png`
@@ -31,9 +32,13 @@ python -m pip install -U scikit-image[optional]
 Some of these may not be necessary but I was getting environment issues setting it up on mine and am ultimately rather lazy.
 
 ### Scoring
-The test is scored from a baseline derived from comparing the **blank** map to the answer key and making that the minimum score possible.
-You could potentially score worse than zero by destroying the map worse than a blank. I recommend not doing that though.
+The test is scored from a baseline derived from comparing the **blank** map to the answer key and making that the zero score. The answer key itself is the perfect score.
+
+You could easily score *far* worse than zero if the algorithm thinks your map is worse than a blank. ***In fact, I would be slightly impressed if you can garner a positive score on a genuine attempt*** When I attempted it with a 5-minute time limit, mine was -48.4 (I am not a NYC native yet and don't know how the lines cross to or diverge in Brooklyn or Queens).
+
 It is not possible to score higher than 100.0
+
+Leave a comment telling me what score you got, and eventually we can curve the scale to fit the prior data.
 
 Note: The answer key itself will not be "perfect" since it is also drawn by hand (painstakingly with the aid of other reference maps)
 
@@ -48,6 +53,7 @@ python gradeQuiz.py test/123.png test/testCase123AccurateRendition.png
 python gradeQuiz.py test/123.png test/testCase123BadColor.png
 python gradeQuiz.py test/123.png test/testCase123SloppyLine.png
 python gradeQuiz.py test/123.png test/testCase123PerfectStructureBadPosition.png
+python gradeQuiz.py answerKey.png test/mark5MinuteAttempt.png
 ```
 
 ![Example](https://raw.githubusercontent.com/markd315/NYC-Subway-Line-Drawing-Quiz/master/test/testResults.png)

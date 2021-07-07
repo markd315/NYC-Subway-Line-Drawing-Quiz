@@ -5,7 +5,7 @@ from skimage.transform import resize
 
 height = 2000
 width = 1700
-blankMapStructuralSim = 0.9523111815574219
+blankMapStructuralSim = 0.9500506656399518
 
 def structural_sim(path_a, path_b):
   '''
@@ -40,10 +40,46 @@ def get_img(path, norm_size=True, norm_exposure=False):
     img = normalize_exposure(img)
   return img
 
+def interpretScore(score):
+  if(score < -80.0):
+    print("Wow. That was really bad (F)")
+  if(score < -60.0):
+    print("Poor effort (D)")
+  elif(score < -55.0):
+    print("Not good (C-)")
+  elif(score < -50.0):
+    print("Not your best attempt (C)")
+  elif(score < -45.0):
+    print("Mediocre (C+)")
+  elif(score < -40.0):
+    print("Keep practicing (B-)")
+  elif(score < -35.0):
+    print("You're finally getting somewhere (B)")
+  elif(score < -25.0):
+    print("Solid effort (B+)")
+  elif(score < 0.0 ):
+    print("Okay (A-)")
+  elif(score == 0.0):
+    print("Pretty sure you used the blank map")
+  elif(score < 30.0):
+    print("Good (A)")
+  elif(score < 60.0):
+    print("Very good (A+)")
+  elif(score < 70.0):
+    print("Amazing (A+)")
+  elif(score < 75.0):
+    print("Incredible effort (A+)")
+  elif(score >= 100.0):
+    print("Looks like you used the answer key")
+  else:
+    print("Inhuman effort, assuming this is cheating")
+
 if __name__ == '__main__':
   img_a = sys.argv[1]
   img_b = sys.argv[2]
   # get the similarity values
   structural_sim = structural_sim(img_a, img_b)
   #print(structural_sim)
-  print(normalizeScore(structural_sim))
+  score = normalizeScore(structural_sim)
+  print(score)
+  interpretScore(score)
