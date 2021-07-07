@@ -5,7 +5,7 @@ from skimage.transform import resize
 
 height = 2000
 width = 1700
-blankMapStructuralSim = 0.95 #TODO update this once final answer key is done.
+blankMapStructuralSim = 0.9523111815574219
 
 def structural_sim(path_a, path_b):
   '''
@@ -45,4 +45,5 @@ if __name__ == '__main__':
   img_b = sys.argv[2]
   # get the similarity values
   structural_sim = structural_sim(img_a, img_b)
+  #print(structural_sim)
   print(normalizeScore(structural_sim))
