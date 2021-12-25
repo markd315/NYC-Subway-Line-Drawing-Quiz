@@ -8,6 +8,10 @@ For example, this would be a decent (but not perfect) start to the quiz. The 123
 
 It's not "perfect" because, for example, the 1 fork goes all the way through the financial district and into the Hudson river. But because this image is so similar to the answer key, it will earn a quite high score if you can draw all lines this accurately.
 
+## Challenges
+
+This SSIM scoring doesn't seem to be working well no matter what I try. Consistently, even if I delete the background map, an extremely low effort attempt with only a few lines drawn tends to overperform a real effort. A different recognition and processing algorithm needs to be employed for this to work as stated in the above section.
+
 ## Instructions
 It is suggested that you use the following settings when you draw your map in an image editing application (I used GIMP which is free):
 - Pencil tool 5 pixels wide.
@@ -41,6 +45,9 @@ It is not possible to score higher than 100.0
 Leave a comment telling me what score you got, and eventually we can curve the scale to fit the prior data.
 
 Note: The answer key itself will not be "perfect" since it is also drawn by hand (painstakingly with the aid of other reference maps)
+
+### Scoring - No map background
+It may be possible to get more accurate grading by copying your lines off of the background (use invert selection and/or fuzzy-select tool) and onto a blank (transparent) 908x1488 canvas like the one in the mapless answer key. Compare to the `maplessAnswerKey.png` file in grading if you do this.
 
 ### Approach
 I used a "real" geographical map with neighborhood lines as the base, not the distorted one used on official MTA maps that disregards the surface scale to focus on underground clarity.
